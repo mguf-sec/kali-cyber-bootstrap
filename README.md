@@ -10,13 +10,13 @@
 ### Why Use This Script?
 
 - Saves **hours** of manual setup
-- Installs all essential tools students need
-- Creates organized folders (`labs`, `tools`, `wordlists`)
-- Adds useful shortcuts (aliases)
-- Works great on VirtualBox / VMware
-- Designed with **beginners in mind**
+- Installs latest tools + student essentials
+- Creates clean organized workspace
+- Adds useful shortcuts
+- Includes VM optimizations
+- Beginner friendly with clear steps
 
-> ⚠️ **Important**: This script is for **educational purposes only**. Use it only on your own machines, authorized labs, or CTF environments.
+> ⚠️ **Important**: For **educational purposes only**. Use only on your own machines, authorized labs, or CTF environments.
 
 ---
 
@@ -24,22 +24,21 @@
 
 - Kali Linux (fresh or existing VM)
 - Internet connection
-- At least **4GB RAM** recommended (8GB+ better)
+- Minimum **4GB RAM** (8GB+ recommended)
+- VirtualBox or VMware recommended
 
 ---
 
-### Super Easy Installation (Step-by-Step for Beginners)
+### Super Easy Installation (Step-by-Step)
 
 #### Option 1: One-Command Install (Recommended)
-
-Open **Terminal** in Kali Linux and copy-paste these commands one by one:
 
 ```bash
 # Download the script
 curl -fsSL https://raw.githubusercontent.com/YOURUSERNAME/kali-cyber-bootstrap/main/kali-cyber-bootstrap.sh -o kali-cyber-bootstrap.sh
 
-# Make it executable
+# Make executable
 chmod +x kali-cyber-bootstrap.sh
 
-# Run the script (with administrator rights)
+# Run it
 sudo ./kali-cyber-bootstrap.sh
