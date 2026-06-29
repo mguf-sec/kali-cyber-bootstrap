@@ -1,77 +1,45 @@
-# kali-cyber-bootstrap
-#!/bin/bash
-# kali-cyber-bootstrap.sh
-# One-shot setup for Kali Linux VMs - Perfect for students, CTF, bug bounty labs
-# Run as root or with sudo
+# 🛡️ kali-cyber-bootstrap
 
-set -Eeuo pipefail
+**The easiest way to turn a fresh Kali Linux VM into a powerful pentesting machine** — made especially for **students, beginners, CTF players, and bug bounty starters**.
 
-echo "🛡️ kali-cyber-bootstrap - Setting up your Kali Linux pentesting environment..."
+![Kali Linux](https://img.shields.io/badge/Kali_Linux-268BEE?style=for-the-badge&logo=kali-linux&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green.svg)
 
-# Update system
-echo "[+] Updating system..."
-apt update && apt full-upgrade -y
+---
 
-# Install core packages
-echo "[+] Installing core tools and dependencies..."
-apt install -y \
-    git wget curl jq tmux fzf ripgrep bat htop btop neovim \
-    gobuster feroxbuster ffuf sqlmap nikto wpscan nmap masscan \
-    hydra john hashcat \
-    evil-winrm impacket-scripts crackmapexec \
-    python3-pipx golang go-tools \
-    wireshark burpsuite caido bloodhound \
-    docker.io docker-compose \
-    zsh zsh-autosuggestions zsh-syntax-highlighting \
-    seclists wordlists
+### Why Use This Script?
 
-# Setup directories
-echo "[+] Creating workspace..."
-mkdir -p ~/labs ~/tools ~/wordlists ~/reports ~/screenshots
+- Saves **hours** of manual setup
+- Installs all essential tools students need
+- Creates organized folders (`labs`, `tools`, `wordlists`)
+- Adds useful shortcuts (aliases)
+- Works great on VirtualBox / VMware
+- Designed with **beginners in mind**
 
-# Clone useful repos
-echo "[+] Cloning useful repositories..."
-cd ~/tools
-git clone https://github.com/danielmiessler/SecLists.git ~/wordlists/SecLists || true
-git clone https://github.com/swisskyrepo/PayloadsAllTheThings.git || true
-git clone https://github.com/projectdiscovery/nuclei-templates.git || true
+> ⚠️ **Important**: This script is for **educational purposes only**. Use it only on your own machines, authorized labs, or CTF environments.
 
-# Install Go tools
-echo "[+] Installing Go tools..."
-go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
-go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
-go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest
-# Add more: katana, gau, etc.
+---
 
-# Python tools via pipx
-echo "[+] Installing Python tools..."
-pipx install mitmproxy dirsearch paramspider
+### Requirements
 
-# Shell setup (zsh)
-echo "[+] Setting up zsh as default shell..."
-chsh -s /usr/bin/zsh "$USER" || true
+- Kali Linux (fresh or existing VM)
+- Internet connection
+- At least **4GB RAM** recommended (8GB+ better)
 
-cat >> ~/.zshrc << 'EOF'
+---
 
-# kali-cyber-bootstrap aliases
-alias ll='ls -lah'
-alias ctf='cd ~/labs'
-alias tools='cd ~/tools'
-alias wordlists='cd ~/wordlists'
-alias ports='ss -tuln'
-alias myip='curl ifconfig.me'
-alias pyserver='python3 -m http.server 8000'
+### Super Easy Installation (Step-by-Step for Beginners)
 
-# Reload function
-reload() { source ~/.zshrc; echo "Shell reloaded!"; }
-EOF
+#### Option 1: One-Command Install (Recommended)
 
-echo "✅ Setup completed!"
-echo ""
-echo "Next steps:"
-echo "1. source ~/.zshrc"
-echo "2. Reboot your VM"
-echo "3. Log into Bitwarden (if installed)"
-echo "4. Start Burp Suite / Caido / Wireshark"
-echo ""
-echo "Happy hacking! (Only on authorized targets)"
+Open **Terminal** in Kali Linux and copy-paste these commands one by one:
+
+```bash
+# Download the script
+curl -fsSL https://raw.githubusercontent.com/YOURUSERNAME/kali-cyber-bootstrap/main/kali-cyber-bootstrap.sh -o kali-cyber-bootstrap.sh
+
+# Make it executable
+chmod +x kali-cyber-bootstrap.sh
+
+# Run the script (with administrator rights)
+sudo ./kali-cyber-bootstrap.sh
